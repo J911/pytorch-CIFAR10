@@ -19,7 +19,7 @@ for epoch in range(2):
 
     running_loss = 0.0
     for i, data in enumerate(trainloader, 0):
-        inputs, labels = data
+        inputs, labels = data[0].to(device), data[1].to(device)
 
         optimizer.zero_grad()
 
@@ -38,7 +38,7 @@ correct = 0
 total = 0
 with torch.no_grad():
     for data in testloader:
-        images, labels = data
+        images, labels = data[0].to(device), data[1].to(device)
         outputs = net(images)
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
