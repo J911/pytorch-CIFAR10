@@ -13,9 +13,9 @@ net = Net()
 net.to(device)
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+optimizer = optim.SGD(net.parameters(), lr=0.01, momentum=0.9)
 
-for epoch in range(2):  
+for epoch in range(200):  
 
     running_loss = 0.0
     for i, data in enumerate(trainloader, 0):
@@ -31,7 +31,7 @@ for epoch in range(2):
         running_loss += loss.item()
         if i % 100 == 0: 
             print('[%d, %5d] loss: %.3f' %
-                  (epoch + 1, i + 1, running_loss / 2000))
+                  (epoch + 1, i + 1, running_loss / (len(trainloader)/256)))
             running_loss = 0.0
     correct = 0
     total = 0
