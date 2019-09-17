@@ -31,7 +31,7 @@ for epoch in range(200):
         running_loss += loss.item()
         if i % 100 == 0: 
             print('[%d, %5d] loss: %.3f' %
-                  (epoch + 1, i + 1, running_loss / (len(trainloader)/256)))
+                  (epoch + 1, i + 1, running_loss / 256)
             running_loss = 0.0
     correct = 0
     total = 0
